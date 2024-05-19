@@ -15,6 +15,7 @@ class YshLaoader
         AutoLoader::register('app/Models');
         require_once 'routes/route/route.php';
         require_once 'routes/api.php';
+        require_once 'routes/web.php';
     }
 
     private static function allow()

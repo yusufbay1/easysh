@@ -35,6 +35,7 @@ class Route
     {
         self::addRoute('patch', $expression, $function);
     }
+
     public static function prefix($prefix, $callback)
     {
         self::$prefix = $prefix;
@@ -91,13 +92,20 @@ class Route
                         if ($basepath != '' && $basepath != '/') {
                             array_shift($matches);
                         }
+                        if (is_array($route['function']) && count($route['function']) == 2) {
+                            $controller = new $route['function'][0]();
+                            $action = $route['function'][1];
+                            $function = [$controller, $action];
+                        } else {
+                            $function = $route['function'];
+                        }
                         if (strtolower($method) == 'post' || strtolower($method) == 'put' || strtolower($method) == 'patch') {
                             $request = Request::createFromGlobals();
                             $arguments = array_merge([$request], $matches);
                         } else {
                             $arguments = $matches;
                         }
-                        if ($return_value = call_user_func_array($route['function'], $arguments)) {
+                        if ($return_value = call_user_func_array($function, $arguments)) {
                             echo $return_value;
                         }
                         $route_match_found = true;

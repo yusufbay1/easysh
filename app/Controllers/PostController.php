@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controller;
 use App\Libraries\Request;
 
-class SearchController extends Controller
+class PostController extends Controller
 {
     public function index(Request $request, int $id)
     {

@@ -7,5 +7,4 @@ if (PHP_VERSION_ID < 8.2) {
 
 require_once 'autoloader/YshLaoader.php';
 
-
 return YshLaoader::loader();
