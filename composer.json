@@ -1,9 +1,5 @@
 {
-    "name": "easysh/easysh",
-    "description": "Easy Php MVC",
-    "type": "project",
-    "license": "MIT",
-    "require": { 
-        "php": ">=8.2"
+    "require": {
+        "ysh/easymvc": "^1.0"
     }
 }
